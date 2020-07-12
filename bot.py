@@ -10,16 +10,22 @@ client = commands.Bot(command_prefix = '.')
 
 @client.event
 async def on_ready():
+	#allows bot to change status
 	activity = discord.Game(name="with the API")
+	#allows bot to change its presence, offline to online
 	await client.change_presence(status=discord.Status.idle, activity=activity)
 	print('Bot online.')
 
+#checks to see if the member's state changed
 @client.event
 async def on_voice_state_update(member, before, after):
 	if before.channel == after.channel:
 		return 
 	if before.channel is None:
-		#await member.guild.system_channel.send("words", tts=True)
+		#uncomment and comment below code if you want to just send a textchannel message
+		#instead of using an audio file. 
+		#change tts to false or true if you want to allow text to speech
+		#await member.guild.system_channel.send("Hello!", tts=True)
 		channel = member.voice.channel
 		vc = await channel.connect()
 		sleep(0.5)
