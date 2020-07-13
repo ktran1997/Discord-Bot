@@ -5,7 +5,7 @@ from time import sleep
 from discord.ext import commands
 from discord.utils import get
 
-TOKEN = 'Key'
+TOKEN = 'NzMwNTc1MjE0MDA1NTgzOTIz.XwaJ6A.h1mJEGDci_ZlHDCyKU5oOH3aQxc'
 client = commands.Bot(command_prefix = '.')
 
 @client.event
@@ -19,13 +19,14 @@ async def on_ready():
 #checks to see if the member's state changed
 @client.event
 async def on_voice_state_update(member, before, after):
+
 	if before.channel == after.channel:
 		return 
 	if before.channel is None:
 		#uncomment and comment below code if you want to just send a textchannel message
 		#instead of using an audio file. 
 		#change tts to false or true if you want to allow text to speech
-		#await member.guild.system_channel.send("Hello!", tts=True)
+		#await member.guild.system_channel.send("Taidaima oni samma", tts=True)
 		channel = member.voice.channel
 		vc = await channel.connect()
 		sleep(0.5)
@@ -34,6 +35,7 @@ async def on_voice_state_update(member, before, after):
 			sleep(f.duration)
 		await vc.disconnect()
 	elif after.channel is None: 
-		await member.guild.system_channel.send("Bye Bye")#,tts=True) 
+		textChannel = client.get_channel(730946903835017277)
+		await textChannel.send("Bye Bye oni samma")#,tts=True) 
 
 client.run(TOKEN)
