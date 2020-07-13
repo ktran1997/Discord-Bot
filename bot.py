@@ -5,7 +5,7 @@ from time import sleep
 from discord.ext import commands
 from discord.utils import get
 
-TOKEN = 'NzMwNTc1MjE0MDA1NTgzOTIz.XwaJ6A.h1mJEGDci_ZlHDCyKU5oOH3aQxc'
+TOKEN = 'API Key'
 client = commands.Bot(command_prefix = '.')
 
 @client.event
@@ -35,7 +35,7 @@ async def on_voice_state_update(member, before, after):
 			sleep(f.duration)
 		await vc.disconnect()
 	elif after.channel is None: 
-		textChannel = client.get_channel(730946903835017277)
+		textChannel = client.get_channel(TextChannel ID)
 		await textChannel.send("Bye Bye oni samma")#,tts=True) 
 
 client.run(TOKEN)
